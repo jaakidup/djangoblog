@@ -89,11 +89,11 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'du527n2123l9o',
-        'USER': 'vewkrrepzpulfv',
-        'PASSWORD': '29b3384a7ceebd72fcc63bf2a891e7369a94dfa8be3b73eaecdafbc1d1a233c9',
-        'HOST': 'ec2-54-225-89-195.compute-1.amazonaws.com',
-        'PORT': '',
+        'NAME': 'dcujfg9isg977n',
+        'USER': 'obkxtlsefsqwms',
+        'PASSWORD': 'c564db63e6d2962fadc26f0c16d12c02de62b5b4fca8e5cae6695e2a5981fd16',
+        'HOST': 'ec2-174-129-18-247.compute-1.amazonaws.com',
+        'PORT': '5432',
     }}
 
 db_from_env = dj_database_url.config(conn_max_age=500)
