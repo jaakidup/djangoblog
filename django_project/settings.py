@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 import django_heroku
-
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l*u@f+19)9@_ni_n3br_p)#(2($l#2q02g-_9zl1*8o5k9x3en'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -80,12 +80,24 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 
+# URI:       postgres://vewkrrepzpulfv:29b3384a7ceebd72fcc63bf2a891e7369a94dfa8be3b73eaecdafbc1d1a233c9@ec2-54-225-89-195.compute-1.amazonaws.com:5432/du527n2123l9o
+    'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'du527n2123l9o',
+        'USER': 'vewkrrepzpulfv',
+        'PASSWORD': '29b3384a7ceebd72fcc63bf2a891e7369a94dfa8be3b73eaecdafbc1d1a233c9',
+        'HOST': 'ec2-54-225-89-195.compute-1.amazonaws.com',
+        'PORT': '',
+    }}
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
