@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
 
 # URI:       postgres://vewkrrepzpulfv:29b3384a7ceebd72fcc63bf2a891e7369a94dfa8be3b73eaecdafbc1d1a233c9@ec2-54-225-89-195.compute-1.amazonaws.com:5432/du527n2123l9o
     'default': {
@@ -94,10 +94,11 @@ DATABASES = {
         'PASSWORD': 'c564db63e6d2962fadc26f0c16d12c02de62b5b4fca8e5cae6695e2a5981fd16',
         'HOST': 'ec2-174-129-18-247.compute-1.amazonaws.com',
         'PORT': '5432',
-    }}
+    }
+    }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DATABASES['sqlite'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
