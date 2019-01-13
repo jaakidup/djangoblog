@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 import django_heroku
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'l*u@f+19)9@_ni_n3br_p)#(2($l#2q02g-_9zl1*8o5k9x3en'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+# ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,25 +81,13 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-
-# URI:       postgres://vewkrrepzpulfv:29b3384a7ceebd72fcc63bf2a891e7369a94dfa8be3b73eaecdafbc1d1a233c9@ec2-54-225-89-195.compute-1.amazonaws.com:5432/du527n2123l9o
-    'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dcujfg9isg977n',
-        'USER': 'obkxtlsefsqwms',
-        'PASSWORD': 'c564db63e6d2962fadc26f0c16d12c02de62b5b4fca8e5cae6695e2a5981fd16',
-        'HOST': 'ec2-174-129-18-247.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
     }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['sqlite'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -158,7 +147,7 @@ EMAIL_USE_TLS = True
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 #
 # Heroku create the database url
